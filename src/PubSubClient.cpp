@@ -296,13 +296,8 @@ boolean PubSubClient::loop() {
                 pingOutstanding = true;
             }
         }
-        if ((t - _QOS1_SENT_TIME >= MQTT_QOS1_WAIT_TIME) && (_QOS1Acknowledged==false)){  // Resend QOS1 message if not acknowledged
-           //debug   Serial.print("*MQQT q1 RESENDING");
-              publish_Q1(_SentQOS1Topic, _SentQOS1buffer, _SENTQOS1Length, false,true);   // send last message again
-              _QOS1_SENT_TIME=millis();                                                   //Reset timer
-        }  
-        
-        if (_client->available()) {
+
+        while (_client->available()) {
             uint8_t llen;
             uint16_t len = readPacket(&llen);
             uint16_t msgId = 0;
@@ -347,6 +342,13 @@ boolean PubSubClient::loop() {
                     _QOS1Acknowledged=true; }   }
             }
         }
+
+        if ((t - _QOS1_SENT_TIME >= MQTT_QOS1_WAIT_TIME) && (_QOS1Acknowledged==false)){  // Resend QOS1 message if not acknowledged
+           //debug   Serial.print("*MQQT q1 RESENDING");
+              publish_Q1(_SentQOS1Topic, _SentQOS1buffer, _SENTQOS1Length, false,true);   // send last message again
+              _QOS1_SENT_TIME=millis();                                                   //Reset timer
+        }
+
         return true;
     }
     return false;

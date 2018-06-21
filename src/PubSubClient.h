@@ -37,7 +37,7 @@
 #endif
                            //     MQTT_QOS1_WAIT_TIME:  timeout for wait for QOS1 PUBACK interval in ms
 #ifndef MQTT_QOS1_WAIT_TIME                                     //
-#define MQTT_QOS1_WAIT_TIME 100                                 //
+#define MQTT_QOS1_WAIT_TIME 300                                 //
 #endif                                                          //
 
 // MQTT_MAX_TRANSFER_SIZE : limit how much data is passed to the network client
@@ -106,7 +106,7 @@ private:
         //               added         for  QOS 1 publication and resend
    uint32_t   _QOS1_SENT_TIME;                              //
    boolean   _QOS1Acknowledged;                             //
-   int       _QOS1MSGID;                                    //
+   uint16_t  _QOS1MSGID;                                    //
    uint8_t   _SentQOS1buffer[MQTT_MAX_PACKET_SIZE];         //
    char      _SentQOS1Topic[40];                            //  is 40 enough??      
    uint16_t  _SENTQOS1Length;                               // 
