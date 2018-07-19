@@ -37,7 +37,7 @@
 #endif
                            //     MQTT_QOS1_WAIT_TIME:  timeout for wait for QOS1 PUBACK interval in ms
 #ifndef MQTT_QOS1_WAIT_TIME                                     //
-#define MQTT_QOS1_WAIT_TIME 300                                 //
+#define MQTT_QOS1_WAIT_TIME 1000                                //
 #endif                                                          //
 
 // MQTT_MAX_TRANSFER_SIZE : limit how much data is passed to the network client
