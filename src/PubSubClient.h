@@ -28,16 +28,17 @@
 
 // MQTT_KEEPALIVE : keepAlive interval in Seconds
 #ifndef MQTT_KEEPALIVE
-#define MQTT_KEEPALIVE 15
+#define MQTT_KEEPALIVE 30
 #endif
 
 // MQTT_SOCKET_TIMEOUT: socket timeout interval in Seconds
 #ifndef MQTT_SOCKET_TIMEOUT
-#define MQTT_SOCKET_TIMEOUT 15
+#define MQTT_SOCKET_TIMEOUT 30
 #endif
-                           //     MQTT_QOS1_WAIT_TIME:  timeout for wait for QOS1 PUBACK interval in ms
+
+//     MQTT_QOS1_WAIT_TIME:  timeout for wait for QOS1 PUBACK interval in ms
 #ifndef MQTT_QOS1_WAIT_TIME                                     //
-#define MQTT_QOS1_WAIT_TIME 1000                                //
+#define MQTT_QOS1_WAIT_TIME 30000                               //
 #endif                                                          //
 
 // MQTT_MAX_TRANSFER_SIZE : limit how much data is passed to the network client
