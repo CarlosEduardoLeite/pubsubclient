@@ -266,6 +266,7 @@ uint16_t PubSubClient::readPacket(uint8_t* lengthLength) {
                 this->stream->write(digit);
             }
         }
+
         if (len < MQTT_MAX_PACKET_SIZE) {
             buffer[len] = digit;
         }
@@ -302,6 +303,7 @@ boolean PubSubClient::loop() {
             uint16_t len = readPacket(&llen);
             uint16_t msgId = 0;
             uint8_t *payload;
+
             if (len > 0) {
                 lastInActivity = t;
                 uint8_t type = buffer[0]&0xF0;
@@ -351,6 +353,7 @@ boolean PubSubClient::loop() {
 
         return true;
     }
+
     return false;
 }
 
@@ -403,6 +406,7 @@ boolean PubSubClient::publish_Q1(const char* topic, const uint8_t* payload, unsi
         uint16_t i;      
               strncpy(_SentQOS1Topic,topic,20);                                   
               for (i=0;i<plength;i++) { _SentQOS1buffer[i]=payload[i];}         
+
               _SentQOS1buffer[sizeof(payload)-1]='\0';                       
               _SENTQOS1Length=plength;                                        
               if(QOS1_MSG_Repeat==false) {_QOS1MSGID= _QOS1MSGID +1 ;}     // If last msg was acknowledged then increment id , else we are retransmitting, so use last msgid   
